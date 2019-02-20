@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request, abort, make_response, render_template
 import json
 import datetime
 import jwt
+import os
 from functools import wraps
 from .utils.user_utils import UserValidation
 from .utils.party_utils import PartyValidation
@@ -20,7 +21,7 @@ def bad_request(message):
 
 def create_app():
     app = Flask(__name__)
-    app.config['SECRET_KEY'] = "thisisthesecretkey"
+    app.config['SECRET_KEY'] = os.getenv("SECRET_KEY")
 
     def token_required(f):
         @wraps(f)

@@ -23,19 +23,20 @@ class BaseTest(unittest.TestCase):
             "isadmin":True
         })
         #details for admin login
-        self.admin_login=json.dumps({
+        self.admin_login_data=json.dumps({
            "username": "yunis",
            "password": "Yunis6tg@#", 
         })
         #normal user signup
-        self.normal_user_info = json.dumps({
-            "username": "yunis",
-            "email": "yunis@gmail.com",
+        self.normal_user_signup_data = json.dumps({
+            "username": "yunis1",
+            "voter_id":"vote257",
+            "email": "yunis1@gmail.com",
             "password": "Yunis5600@",
             "isadmin":False
         })
-        self.normal_user_login_info = json.dumps({
-            "username": "yunis",
+        self.normal_user_login_data = json.dumps({
+            "username": "yunis1",
             "password": "Yunis5600@"
             })
         
@@ -47,6 +48,16 @@ class BaseTest(unittest.TestCase):
             })
         self.login_admin = self.test_client.post(
             "/api/v2/users/login",
-            data=self.admin_login,
+            data=self.admin_login_data,
             content_type='application/json')
         # self.admin_token = json.loads(self.login_admin.data.decode())
+        self.signup_normal_user= self.test_client.post(
+             "/api/v2/users",
+             data=self.normal_user_signup_data,
+             content_type='application/json')
+        
+        self.login_normal_user = self.test_client.post(
+            "/api/v2/users/login",
+            data=self.normal_user_login_data,
+            content_type='application/json')
+         

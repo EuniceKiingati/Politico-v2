@@ -4,14 +4,13 @@ import os
 
 class Dbase():
     def __init__(self):
-        self.db_name = 'politico'
-        self.db_host = 'localhost'
-        self.db_user ='postgres'
-        self.db_password ='Yunis1500'
+        self.db_name =os.getenv("DB_NAME")
+        self.db_host =os.getenv("DB_HOST")
+        self.db_user =os.getenv("DB_USER")
+        self.db_password =os.getenv("DB_PASSWORD")
         self.conn = None
 
     def connection_to_Dbase(self):
-        # get from app settings:development
             try:
                 self.conn= psycopg2.connect(
                     database= self.db_name,

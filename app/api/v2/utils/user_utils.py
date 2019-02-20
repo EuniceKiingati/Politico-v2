@@ -21,7 +21,7 @@ class UserValidation(User):
         self.voter_id=data['voter_id']
         self.email = data['email']
         self.password = data['password']
-        self.isadmin = data['role']
+        self.isadmin = data['isadmin']
 
     def validate_signup(self):
         Userlist=User.get_all_User(self)
