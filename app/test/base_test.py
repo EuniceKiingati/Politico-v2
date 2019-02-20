@@ -39,7 +39,15 @@ class BaseTest(unittest.TestCase):
             "username": "yunis1",
             "password": "Yunis5600@"
             })
-        
+          #party details
+        self.party = json.dumps({
+            "party_name": "Party1",
+            "hqaddress": "sampleaddress",
+            "logoUrl": "sampleurl"
+        })
+          
+
+
         self.signup_admin = self.test_client.post(
             "/api/v2/users",
             data=self.admin_signup_data,
@@ -50,7 +58,7 @@ class BaseTest(unittest.TestCase):
             "/api/v2/users/login",
             data=self.admin_login_data,
             content_type='application/json')
-        # self.admin_token = json.loads(self.login_admin.data.decode())
+        self.admin_token = json.loads(self.login_admin.data.decode())
         self.signup_normal_user= self.test_client.post(
              "/api/v2/users",
              data=self.normal_user_signup_data,
@@ -60,4 +68,14 @@ class BaseTest(unittest.TestCase):
             "/api/v2/users/login",
             data=self.normal_user_login_data,
             content_type='application/json')
-         
+        self.normal_user_token=json.loads(self.login_normal_user.data.decode())
+
+        self.create_party=self.test_client.post(
+            '/api/v2/parties', 
+            data=self.party,
+            headers={
+                'token':self.admin_token['token'],
+                'content-type':'application/json'
+            } )
+                
+       

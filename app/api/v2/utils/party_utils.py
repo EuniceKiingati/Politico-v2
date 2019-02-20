@@ -31,7 +31,6 @@ class PartyValidation():
         for party in partylist:
             if self.party_name == party["party_name"]:
                 message = "party_name {} already taken".format(self.party_name)
-                print(message)
                 return bad_request(message)
         if type(self.party_name) != str:
             message = "party name must be a string"

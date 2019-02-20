@@ -39,7 +39,6 @@ def create_app():
                 # verify if token is valid
                 try:
                     data = jwt.decode(token, app.config['SECRET_KEY'])
-                    print(data)
                     for user in users:
                         if user['username'] == data['username']:
                             current_user = user
@@ -64,7 +63,6 @@ def create_app():
         validate = UserValidation(data)
         validate.validate_signup()
         new_user = User(data)
-        print(new_user)
         new_user.save()
 
         userobj = User()
@@ -373,12 +371,16 @@ def create_app():
         response.status_code = 404
         return response
 
-    # @app.route('/api/v2/office/<int:office_id>/', methods=['POST'])
-    # def result():
-    #     data=request.get_json()
-    #     officeobj = Office()
-    #     officelist = officeobj.get_all_offices()
-    #     for office in officelist:
-    #         if office['office_id'] == office_id:
-
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     return app

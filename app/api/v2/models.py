@@ -18,7 +18,6 @@ class Dbase():
                     user=self.db_user,
                     password=self.db_password
                 )
-                print("connection successful")
             except Exception as e:
                 print( e, "can't connect to database")
 
@@ -108,7 +107,6 @@ class User(Dbase):
             # cursor.execute(query)
             self.conn.commit()
             self.conn.close()
-            print("user signed up successfully")
         except Exception as e:
             print( e, "could not save")
     

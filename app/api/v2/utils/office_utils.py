@@ -30,7 +30,6 @@ class OfficeValidation():
         for office in officelist:
             if self.office_name == office["office_name"]:
                 message = "office_name {} already taken".format(self.office_name)
-                print(message)
                 return bad_request(message)
         if type(self.office_name) != str:
             message = "office name must be a string"
