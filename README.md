@@ -2,7 +2,7 @@
 # Politico-v2
 Politico is a web application that enables people to vote, register as candidates  
 #Heroku link  
-https://dashboard.heroku.com/apps/eunice-politico-v2 
+https://eunice-politico-v2.herokuapp.com/ 
 
 **How to test the app**
 1. Create  a virtual environment with the command  
