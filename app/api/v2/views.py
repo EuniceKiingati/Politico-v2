@@ -257,17 +257,17 @@ def create_app():
             response.status_code = 201
             return response
 
-        @app.route('/api/v2/offices', methods=['GET'])
-        def get_offices():
-            officeobj = Office()
-            office = officeobj.get_all_offices()
-            response = jsonify({
-                "message": "Political offices retrieved successfully",
-                "status": 200,
-                "data": office
+    @app.route('/api/v2/offices', methods=['GET'])
+    def get_offices():
+        officeobj = Office()
+        office = officeobj.get_all_offices()
+        response = jsonify({
+            "message": "Political offices retrieved successfully",
+            "status": 200,
+            "data": office
             })
-            response.status_code = 200
-            return response
+        response.status_code = 200
+        return response
 
     @app.route('/api/v2/offices/<int:office_id>', methods=['GET'])
     def single_political_office(office_id):
@@ -371,6 +371,7 @@ def create_app():
         response.status_code = 404
         return response
 
+    
     
     
     

@@ -14,12 +14,12 @@ def bad_request(message):
 
 class OfficeValidation():
     def __init__(self, data):
-        self.data=data
+        self.data = data
         self.office_name = data['office_name']
-        self.office_type= data['office_type']
+        self.office_type = data['office_type']
 
     def validate_create(self):
-        officelist=Office.get_all_offices(self)
+        officelist = Office.get_all_offices(self)
 
         if not self.data:
             message = "You must provide create_office data"
@@ -29,7 +29,8 @@ class OfficeValidation():
             return bad_request(message)
         for office in officelist:
             if self.office_name == office["office_name"]:
-                message = "office_name {} already taken".format(self.office_name)
+                message = "office_name {} already taken".format(
+                    self.office_name)
                 return bad_request(message)
         if type(self.office_name) != str:
             message = "office name must be a string"
