@@ -1,6 +1,6 @@
 import unittest
 import json
-from app.api.v2.models import *
+from app.api.v2.models.database_connection import Dbase
 from app.api.v2.views import create_app
 
 
@@ -18,7 +18,7 @@ class BaseTest(unittest.TestCase):
         # details for admin signup
         self.admin_signup_data = json.dumps({
             "username": "yunis",
-            "voter_id": "vote256",
+            "voter_id": "vot5256",
             "password": "Yunis6tg@#",
             "email": "yunis500@gmail.com",
             "isadmin": True
@@ -51,6 +51,15 @@ class BaseTest(unittest.TestCase):
             "office_type": "sampletype",
 
         })
+        self.vote_data = json.dumps({
+            "voter_id": "vot5256",
+            "office_id": 1,
+            "candidate_id": 1
+
+
+        })
+        self.candidate_data = json.dumps({
+            "user_id": 1})
 
         self.signup_admin = self.test_client.post(
             "/api/v2/users",
@@ -89,3 +98,13 @@ class BaseTest(unittest.TestCase):
                 'token': self.admin_token['token'],
                 'content-type': 'application/json'
             })
+        self.create_candidate = self.test_client.post(
+            '/api/v2/office/1/register', data=self.candidate_data,
+            headers={
+                'content-type': 'application/json',
+                'token': self.admin_token['token']})
+        self.vote = self.test_client.post(
+            '/api/v2/votes', data=self.vote_data,
+            headers={
+                'content-type': 'application/json',
+                'token': self.admin_token['token']})

@@ -48,3 +48,35 @@ class TestParties(BaseTest):
 
                 'content-type': 'application/json'})
         self.assertEqual(response.status_code, 400)
+
+    def test_get_single_party(self):
+        response = self.test_client.get(
+            '/api/v2/parties/1',
+            headers={
+                'token': self.normal_user_token['token']
+            })
+        self.assertEqual(response.status_code, 200)
+
+    def test_delete_party(self):
+        response = self.test_client.delete(
+            '/api/v2/parties/{}'.format(1), headers={
+                'token': self.admin_token['token']})
+        self.assertEqual(response.status_code, 200)
+
+    def test_get_all_parties(self):
+        response = self.test_client.get(
+            '/api/v2/parties', headers={
+                'token': self.normal_user_token['token']})
+        self.assertEqual(response.status_code, 200)
+
+    def test_party_name_not_string(self):
+        data = json.dumps({
+            "party_name": 254,
+            "hqaddress": "sampleaddress",
+            "logoUrl": "sampleUrl"})
+        response = self.test_client.post(
+            '/api/v2/parties',
+            headers={
+                'content-type': 'application/json',
+                'token': self.admin_token['token']})
+        self.assertEqual(response.status_code, 400)

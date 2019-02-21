@@ -1,6 +1,6 @@
 import re
 from flask import jsonify, abort
-from app.api.v2.models import Party
+from app.api.v2.models.party_models import Party
 
 
 def bad_request(message):
@@ -14,13 +14,13 @@ def bad_request(message):
 
 class PartyValidation():
     def __init__(self, data):
-        self.data=data
+        self.data = data
         self.party_name = data['party_name']
         self.hqaddress = data['hqaddress']
         self.logoUrl = data['logoUrl']
 
     def validate_create(self):
-        partylist=Party.get_all_parties(self)
+        partylist = Party.get_all_parties(self)
 
         if not self.data:
             message = "You must provide create_party data"

@@ -1,6 +1,6 @@
 import re
 from flask import jsonify, abort
-from app.api.v2.models import Office
+from app.api.v2.models.office_models import Office
 
 
 def bad_request(message):
