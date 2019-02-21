@@ -1,6 +1,7 @@
 
-# Politico V2
+# Politico V2  
 A system for managing elections  
+[![Coverage Status](https://coveralls.io/repos/github/EuniceKiingati/Politico-v2/badge.svg?branch=ch-refactor-code-164131067)](https://coveralls.io/github/EuniceKiingati/Politico-v2?branch=ch-refactor-code-164131067)
 [![Build Status](https://travis-ci.org/EuniceKiingati/Politico-v2.svg?branch=ch-test-signup-login-164115338)](https://travis-ci.org/EuniceKiingati/Politico-v2)  
 
 Heroku link  
