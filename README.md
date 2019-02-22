@@ -25,9 +25,11 @@ https://eunice-politico-v2.herokuapp.com/
   
 1. now we are ready to run. 
 	1. for tests run  
-         
-	`$ pytest`   
-	1. for the application run  
+	
+	`$ pytest`  
+	
+       1. for the application run  
+
 	`$ python run.py`  
 
 If you ran the application you can test the various api end points using postman. The appi endpoints are  
